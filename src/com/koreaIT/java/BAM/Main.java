@@ -1,5 +1,7 @@
 package com.koreaIT.java.BAM;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,10 +12,12 @@ public class Main {
 		
 		int lastArticleId = 0;
 		
+		List<Article> articles = new ArrayList<>();
+		//어레이리스트= 저장하기(DB역할 대체).
 		while(true) {
 			
 			System.out.printf("명령어) ");
-			String cmd = sc.nextLine();
+			String cmd = sc.nextLine().trim();
 		
 			if(cmd.length() == 0) {
 				System.out.println("명령어를 입력해주세요");
@@ -31,6 +35,8 @@ public class Main {
 				String title = sc.nextLine();
 				System.out.printf("내용 : ");
 				String body = sc.nextLine();
+				//id title body를 밑에 인자로 넘겼고
+				Article article = new Article(id, title, body);
 				
 //				lastArticleId++;
 				
@@ -53,5 +59,16 @@ public class Main {
 		System.out.println("== 프로그램 종료 ==");
 	
 		sc.close();
+	}
+}
+class Article {
+	int id; //id title body를 파라미터로 받아왔고
+	String title;
+	String body;
+	//id title body를 밑에서 활용을 한다.
+	Article(int id, String title, String body){
+		this.id = id;
+		this.title = title;
+		this.body = body;
 	}
 }
