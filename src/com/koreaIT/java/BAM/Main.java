@@ -35,8 +35,12 @@ public class Main {
 				String title = sc.nextLine();
 				System.out.printf("내용 : ");
 				String body = sc.nextLine();
+				
+				
 				//id title body를 밑에 인자로 넘겼고
 				Article article = new Article(id, title, body);
+				
+				articles.add(article);
 				
 //				lastArticleId++;
 				
@@ -47,12 +51,24 @@ public class Main {
 //				System.out.printf("%s, %s\n", title, body);
 			}
 			else if (cmd.equals("article list")) {
+				
+				if (articles.size() == 0){
 				System.out.println("게시물이 없습니다");
-			}
-			
-			else {
+				continue;
+				}
+				
+				System.out.println("번호	|	제목");
+				
+				for(int i = articles.size() -1; i >=0;  i--) {
+					Article article = articles.get(i);
+					System.out.printf("%d	|	 %s\n", article.id, article.title);
+				}
+				
+			}else {
 				System.out.println("존재하지 않는 명령어 입니다");
 			}
+			
+	
 			
 		}
 		
